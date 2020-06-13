@@ -62,14 +62,6 @@ declare global {
        */
       debug: boolean;
       /**
-       * Use a strict validation when a model is used by the converter.
-       * When a property is unknown, it throw a `BadRequest` (see [Converters](/docs/converters.md)).
-       * By default true.
-       *
-       * @deprecated Use converter.additionalProperties
-       */
-      validationModelStrict: boolean;
-      /**
        * Converter configuration.
        */
       converter: Partial<IConverterSettings>;

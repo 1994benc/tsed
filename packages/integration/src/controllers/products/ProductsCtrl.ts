@@ -36,7 +36,6 @@ export class ProductsCtrl {
   @Post("/user")
   public async postUserProduct(@BodyParams() strictBodyCheck: UserProductPostModel): Promise<UserProductPostModel> {
     console.log(strictBodyCheck.categoryId);
-    // wont throw if received even though ModelStrict is set to true
     // swagger documentation also shows categoryId as property although it should be ignored.
     // categoryId is also sent in response
 

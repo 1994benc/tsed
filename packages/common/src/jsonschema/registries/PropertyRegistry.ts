@@ -77,47 +77,4 @@ export class PropertyRegistry {
 
     properties.set(propertyKey, property);
   }
-
-  /**
-   *
-   * @param target
-   * @param propertyKey
-   * @param allowedRequiredValues
-   * @deprecated
-   */
-  // istanbul ignore next
-  @Deprecated("PropertyRegistry.required is deprecated")
-  static required(target: Type<any>, propertyKey: string | symbol, allowedRequiredValues: any[] = []) {
-    const property = this.get(target, propertyKey);
-
-    property.required = true;
-    property.allowedRequiredValues = allowedRequiredValues.concat(property.allowedRequiredValues);
-
-    this.set(target, propertyKey, property);
-    this.get(target, propertyKey).store.merge("responses", {
-      "400": {
-        description: "BadRequest"
-      }
-    });
-
-    return this;
-  }
-
-  /**
-   *
-   * @param {(propertyMetadata: PropertyMetadata, parameters: DecoratorParameters) => void} fn
-   * @returns {Function}
-   * @deprecated
-   */
-  // istanbul ignore next
-  @Deprecated("PropertyRegistry.decorate is deprecated. Use PropertyFn instead.")
-  static decorate(fn: (propertyMetadata: PropertyMetadata, parameters: DecoratorParameters) => void): Function {
-    return (...parameters: any[]): any => {
-      const propertyMetadata = PropertyRegistry.get(parameters[0], parameters[1]);
-      const result: any = fn(propertyMetadata, parameters as DecoratorParameters);
-      if (typeof result === "function") {
-        result(...parameters);
-      }
-    };
-  }
 }

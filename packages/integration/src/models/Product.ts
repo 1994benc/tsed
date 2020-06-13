@@ -1,4 +1,4 @@
-import {IgnoreProperty, ModelStrict, Property, Required} from "@tsed/common";
+import {AdditionalProperties, IgnoreProperty, Property, Required} from "@tsed/common";
 
 class Product {
   @Property()
@@ -11,7 +11,7 @@ class Product {
   description: string;
 }
 
-@ModelStrict(true)
+@AdditionalProperties(true)
 export class UserProductPostModel extends Product {
   @Required()
   name: string;
@@ -23,7 +23,7 @@ export class UserProductPostModel extends Product {
   description: string;
 }
 
-@ModelStrict(true)
+@AdditionalProperties(true)
 export class AdminProductPostModel extends Product {
   @Required()
   name: string;
