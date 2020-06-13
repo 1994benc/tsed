@@ -461,29 +461,6 @@ describe("Rest", () => {
         });
     });
 
-    it("POST /rest/errors/required-model-2", done => {
-      request
-        .post("/rest/errors/required-model-2")
-        .expect(400)
-        .end((err: any, response: any) => {
-          expect(response.text).to.eq("Property name on class CustomModel is required. Given value: undefined");
-
-          expect(JSON.parse(response.headers.errors)).to.deep.eq([
-            {
-              dataPath: "",
-              keyword: "required",
-              message: "should have required property 'name'",
-              modelName: "CustomModel",
-              params: {
-                missingProperty: "name"
-              },
-              schemaPath: "#/required"
-            }
-          ]);
-          done();
-        });
-    });
-
     it("POST /rest/errors/required-prop-name", done => {
       request
         .post(`/rest/errors/required-prop-name`)

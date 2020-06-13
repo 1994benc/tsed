@@ -144,9 +144,4 @@ describe("JsonSchema", () => {
       expect(schema.toJSON()).to.deep.eq({type: "object", description: "description"});
     });
   });
-  describe("getJsonType", () => {
-    it("should return json type", () => {
-      expect(JsonSchema.getJsonType(String)).to.equal("string");
-    });
-  });
 });

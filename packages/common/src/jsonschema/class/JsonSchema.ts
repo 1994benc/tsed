@@ -193,16 +193,6 @@ export class JsonSchema implements JSONSchema6 {
 
   /**
    *
-   * @param value
-   * @deprecated
-   * @returns {JSONSchema6TypeName | JSONSchema6TypeName[]}
-   */
-  static getJsonType(value: any): JSONSchema6TypeName | JSONSchema6TypeName[] {
-    return getJsonType(value);
-  }
-
-  /**
-   *
    * @param type
    * @returns {JSONSchema6}
    */

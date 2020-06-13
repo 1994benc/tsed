@@ -6,7 +6,6 @@ import {PropertyRegistry} from "../../jsonschema/registries/PropertyRegistry";
 import {getJsonSchema} from "../../jsonschema/utils/getJsonSchema";
 import {ArrayConverter, DateConverter, MapConverter, PrimitiveConverter, SetConverter, SymbolConverter} from "../components";
 import {CONVERTER} from "../constants/index";
-import {RequiredPropertyError} from "../errors/RequiredPropertyError";
 import {UnknownPropertyError} from "../errors/UnknownPropertyError";
 import {IConverter, IConverterOptions, IDeserializer, ISerializer} from "../interfaces/index";
 
@@ -181,12 +180,6 @@ export class ConverterService {
       return this.convertProperty(obj, instance, propertyName, propertyMetadata, options);
     });
 
-    // Required validation
-    if (checkRequiredValue) {
-      // TODO v6 REMOVE REQUIRED check
-      this.checkRequiredValue(instance, properties);
-    }
-
     return instance;
   }
 
@@ -254,20 +247,6 @@ export class ConverterService {
         options
       );
     }
-  }
-
-  /**
-   * @deprecated
-   * @param instance
-   * @param {Map<string | symbol, PropertyMetadata>} properties
-   */
-  private checkRequiredValue(instance: any, properties: Map<string | symbol, PropertyMetadata>) {
-    properties.forEach((propertyMetadata: PropertyMetadata) => {
-      const value = instance[propertyMetadata.propertyKey];
-      if (propertyMetadata.isRequired(value)) {
-        throw new RequiredPropertyError(getClass(instance), propertyMetadata.propertyKey, value);
-      }
-    });
   }
 
   /**

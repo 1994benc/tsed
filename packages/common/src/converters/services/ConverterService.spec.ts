@@ -285,68 +285,6 @@ describe("ConverterService", () => {
       );
     });
 
-    describe("when an attribute is required", () => {
-      it("should throw a bad request (undefined value)", async () => {
-        // GIVEN
-        const converterService = await PlatformTest.invoke<ConverterService>(ConverterService, []);
-
-        // WHEN
-        let actualError;
-        try {
-          converterService.deserialize(
-            {
-              test: undefined
-            },
-            JsonFoo2
-          );
-        } catch (er) {
-          actualError = er;
-        }
-
-        expect(actualError.message).to.equal("Property test on class JsonFoo2 is required. Given value: undefined");
-      });
-
-      it("should throw a bad request (null value)", async () => {
-        // GIVEN
-        const converterService = await PlatformTest.invoke<ConverterService>(ConverterService, []);
-
-        // WHEN
-        let actualError;
-        try {
-          converterService.deserialize(
-            {
-              test: null
-            },
-            JsonFoo2
-          );
-        } catch (er) {
-          actualError = er;
-        }
-
-        expect(actualError.message).to.equal("Property test on class JsonFoo2 is required. Given value: null");
-      });
-
-      it("should throw a bad request (empty value)", async () => {
-        // GIVEN
-        const converterService = await PlatformTest.invoke<ConverterService>(ConverterService, []);
-
-        // WHEN
-        let actualError;
-        try {
-          converterService.deserialize(
-            {
-              test: ""
-            },
-            JsonFoo2
-          );
-        } catch (er) {
-          actualError = er;
-        }
-
-        expect(actualError.message).to.equal("Property test on class JsonFoo2 is required. Given value: ");
-      });
-    });
-
     describe("With model annotation", () => {
       it("should convert model", () => {
         class Model {
