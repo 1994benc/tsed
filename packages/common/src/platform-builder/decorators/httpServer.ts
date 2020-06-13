@@ -4,12 +4,6 @@ import * as Http from "http";
 
 export interface IHttpFactory {
   (target: Type<any>, targetKey: string, descriptor: TypedPropertyDescriptor<Function> | number): any;
-
-  /**
-   * @deprecated
-   * @returns {"https".Server}
-   */
-  get(): Http.Server;
 }
 
 export type HttpServer = Http.Server & IHttpFactory;

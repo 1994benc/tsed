@@ -10,10 +10,6 @@ export interface IControllerMiddlewares {
 
 export interface IControllerOptions extends Partial<IProvider<any>> {
   path?: PathParamsType;
-  /**
-   * @deprecated
-   */
-  dependencies?: Type<any>[];
   children?: Type<any>[];
   routerOptions?: any;
   middlewares?: Partial<IControllerMiddlewares>;
@@ -58,7 +54,7 @@ export function Controller(options: PathParamsType | IControllerOptions, ...chil
     } else {
       registerController({
         provide: target,
-        children: (options as IControllerOptions).dependencies || (options as IControllerOptions).children,
+        children: (options as IControllerOptions).children,
         ...options
       });
     }

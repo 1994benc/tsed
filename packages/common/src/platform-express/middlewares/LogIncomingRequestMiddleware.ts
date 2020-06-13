@@ -76,10 +76,6 @@ export class LogIncomingRequestMiddleware implements IMiddleware {
     request.ctx.logger.flush();
   }
 
-  /**
-   * Attach all information that will be necessary to log the request. Attach a new `request.log` object.
-   * @param request
-   */
   protected configureRequest(request: Req) {
     const minimalInfo = this.minimalRequestPicker(request);
     const requestObj = this.requestToObject(request);

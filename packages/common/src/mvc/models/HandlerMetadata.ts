@@ -15,15 +15,7 @@ export interface IHandlerConstructorOptions {
 export class HandlerMetadata {
   readonly target: any;
   readonly token: Type<any>;
-  /**
-   * @deprecated
-   */
-  readonly methodClassName: string;
   readonly propertyKey: string | symbol;
-  /**
-   * @deprecated
-   */
-  readonly method: string;
   readonly injectable: boolean = false;
   readonly type: HandlerType = HandlerType.FUNCTION;
   readonly hasErrorParam: boolean = false;
@@ -40,8 +32,6 @@ export class HandlerMetadata {
       this.target = target;
       this.token = token!;
       this.propertyKey = propertyKey;
-      this.methodClassName = String(propertyKey);
-      this.method = String(propertyKey);
       this.hasNextFunction = this.hasParamType(ParamTypes.NEXT_FN);
       this.hasErrorParam = this.hasParamType(ParamTypes.ERR);
       this.injectable = (Metadata.get(PARAM_METADATA, target, propertyKey) || []).length > 0;
