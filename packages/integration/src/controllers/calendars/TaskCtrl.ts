@@ -1,4 +1,4 @@
-import {Authenticated, Controller, Get, MergeParams, PathParams, QueryParams, UseBefore} from "@tsed/common";
+import {Controller, Get, MergeParams, PathParams, QueryParams, UseBefore} from "@tsed/common";
 import {Operation} from "@tsed/swagger";
 import {Hidden} from "../../../../../packages/swagger/src";
 import {Test2Middleware} from "../../middlewares/middleware";
@@ -6,7 +6,6 @@ import {Test2Middleware} from "../../middlewares/middleware";
 @Controller("/:eventId/tasks")
 @MergeParams()
 @UseBefore(Test2Middleware)
-@Authenticated({options: "options"})
 export class TaskCtrl {
   @Get("/")
   @Operation({tags: ["api", "task"]})

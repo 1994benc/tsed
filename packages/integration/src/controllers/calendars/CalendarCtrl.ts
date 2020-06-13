@@ -1,5 +1,4 @@
 import {
-  Authenticated,
   BodyParams,
   ContentType,
   Context,
@@ -224,7 +223,6 @@ export class CalendarCtrl extends BaseController {
 
   @Delete("/")
   @Status(204)
-  @Authenticated({role: "admin"})
   @Security("global_auth", "read:global")
   @Security("calendar_auth", "write:calendar", "read:calendar")
   public remove(
@@ -258,7 +256,6 @@ export class CalendarCtrl extends BaseController {
   }
 
   @Get("/mvc")
-  @Authenticated()
   @Use(CalendarCtrl.middleware)
   public testStackMiddlewares(@Request("user") user: any, @Locals("id") id: any, @Context("uid") uid: string): CalendarModel {
     const model = new CalendarModel();
@@ -269,7 +266,6 @@ export class CalendarCtrl extends BaseController {
   }
 
   @Get("/middlewares2")
-  @Authenticated()
   @UseAfter(CalendarCtrl.middleware2)
   public testUseAfter(@Request("user") user: any): Object {
     const model = new CalendarModel();

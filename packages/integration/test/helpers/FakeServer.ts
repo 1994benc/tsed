@@ -12,7 +12,6 @@ import {ErrorsCtrl} from "../../src/controllers/errors/ErrorsCtrl";
 import {SocketPageCtrl} from "../../src/controllers/pages/SocketPageCtrl";
 import {ProductsCtrl} from "../../src/controllers/products/ProductsCtrl";
 import {UserCtrl} from "../../src/controllers/users/UserCtrl";
-import "../../src/middlewares/CustomAuthMiddleware";
 import {FeatureModule} from "../../src/module/feature/FeatureModule";
 
 const rootDir = __dirname + "/../../src";

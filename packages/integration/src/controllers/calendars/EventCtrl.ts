@@ -1,5 +1,4 @@
 import {
-  Authenticated,
   BodyParams,
   Controller,
   Delete,
@@ -79,7 +78,6 @@ export class EventCtrl extends BaseController {
    * @returns {null}
    */
   @Post("/list")
-  @Authenticated({role: "admin"})
   @ReturnsArray(200, {type: EventModel})
   update(@BodyParams("event", EventModel) event: EventModel[]): EventModel[] {
     return event;
