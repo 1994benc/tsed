@@ -1,16 +1,10 @@
-import {ParamMetadata, ParamRegistry, ParamTypes} from "@tsed/common";
-import {catchError} from "@tsed/core";
+import {ParamMetadata, ParamTypes} from "@tsed/common";
 import {expect} from "chai";
-import * as Sinon from "sinon";
-import {QueryParams} from "../decorators/params/queryParams";
 import {ValidationPipe} from "./ValidationPipe";
 
 describe("ValidationPipe", () => {
   it("should return value", async () => {
-    const validate = Sinon.stub();
-    const validator = new ValidationPipe({
-      validate
-    });
+    const validator = new ValidationPipe();
 
     class Test {}
 

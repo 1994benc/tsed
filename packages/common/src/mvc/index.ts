@@ -25,7 +25,6 @@ export * from "./pipes/DeserializerPipe";
 
 // services
 export * from "./services/ParseService";
-export * from "./services/ValidationService";
 
 // errors
 export * from "./errors/TemplateRenderingError";
