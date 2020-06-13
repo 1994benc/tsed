@@ -4,7 +4,6 @@ import {
   EndpointMetadata,
   HandlerMetadata,
   HandlerType,
-  IFilter,
   IHandlerConstructorOptions,
   IPipe,
   ParamMetadata,
@@ -13,7 +12,6 @@ import {
 import {ValidationError} from "../../mvc/errors/ValidationError";
 import {HandlerContext} from "../domain/HandlerContext";
 import {ParamValidationError} from "../errors/ParamValidationError";
-import {UnknownFilterError} from "../errors/UnknownFilterError";
 
 @Injectable({
   scope: ProviderScope.SINGLETON
@@ -105,29 +103,8 @@ export class PlatformHandler {
         return context.request.ctx.data;
 
       default:
-        if (param.filter) {
-          return this.getFilter(param, context);
-        }
-
         return context.request;
     }
-  }
-
-  /**
-   * Return a custom filter
-   * @param param
-   * @param context
-   * @deprecated
-   */
-  getFilter(param: ParamMetadata, context: HandlerContext) {
-    const {expression} = param;
-    const instance = this.injector.get<IFilter>(param.filter);
-
-    if (!instance || !instance.transform) {
-      throw new UnknownFilterError(param.filter!);
-    }
-
-    return instance.transform(expression, context.request, context.response);
   }
 
   mapHandlerContext(metadata: HandlerMetadata, {request, response, err, next}: any): HandlerContext {

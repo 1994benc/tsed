@@ -1,5 +1,4 @@
 import {Enumerable, Storable, Type} from "@tsed/core";
-import {IFilter} from "../interfaces/IFilter";
 import {ParamTypes} from "./ParamTypes";
 
 export interface IParamConstructorOptions {
@@ -9,10 +8,6 @@ export interface IParamConstructorOptions {
   required?: boolean;
   expression?: string;
   useType?: Type<any>;
-  /**
-   * @deprecated use pipe instead
-   */
-  filter?: Type<IFilter>;
   paramType?: string | ParamTypes;
   pipes?: Type<IPipe>[];
 }
@@ -36,29 +31,21 @@ export class ParamMetadata extends Storable implements IParamConstructorOptions 
   @Enumerable()
   pipes: Type<IPipe>[] = [];
 
-  @Enumerable()
-  filter?: Type<IFilter>;
-
   constructor(options: IParamConstructorOptions) {
     super(options.target as Type<any>, options.propertyKey!, options.index);
 
-    const {expression, paramType, filter, pipes} = options;
+    const {expression, paramType, pipes} = options;
 
     this.expression = expression || this.expression;
     this.paramType = paramType || this.paramType;
-    this.filter = filter;
     this.pipes = pipes || [];
   }
 
-  get service(): string | Type<any> | ParamTypes {
-    return this.filter || this.paramType;
+  get service(): string {
+    return this.paramType;
   }
 
-  set service(service: string | Type<any> | ParamTypes) {
-    if (typeof service === "string") {
-      this.paramType = service;
-    } else {
-      this.filter = service;
-    }
+  set service(service: string) {
+    this.paramType = service;
   }
 }

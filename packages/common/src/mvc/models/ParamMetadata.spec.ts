@@ -1,15 +1,9 @@
 import {Store} from "@tsed/core";
 import {expect} from "chai";
-import {IFilter, ParamMetadata, ParamTypes} from "../../../src/mvc";
+import {ParamMetadata, ParamTypes} from "../../../src/mvc";
 
 class Test {
   method(arg1: any, arg2: any) {}
-}
-
-class TestFilter implements IFilter {
-  transform(value: any) {
-    return value;
-  }
 }
 
 describe("ParamMetadata", () => {
@@ -66,23 +60,7 @@ describe("ParamMetadata", () => {
         .to.eq(ParamTypes.ERR);
     });
   });
-
-  describe("as a filter", () => {
-    let paramMetadata: ParamMetadata;
-
-    before(() => {
-      paramMetadata = new ParamMetadata({target: Test, propertyKey: "method", index: 0});
-      paramMetadata.required = true;
-      paramMetadata.expression = "test";
-      paramMetadata.type = Test;
-      paramMetadata.filter = TestFilter;
-    });
-
-    it("should return the service", () => {
-      expect(paramMetadata.service).to.eq(TestFilter);
-    });
-  });
-
+  
   describe("isRequired", () => {
     describe("when property is required", () => {
       let paramMetadata: ParamMetadata;
