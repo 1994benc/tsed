@@ -1,4 +1,11 @@
-import {Configuration, ControllerProvider, EndpointMetadata, InjectorService, Platform, Service} from "@tsed/common";
+import {
+  Configuration,
+  ControllerProvider,
+  EndpointMetadata,
+  InjectorService,
+  Platform,
+  Service
+} from "@tsed/common";
 import {deepExtends, nameOf, Store} from "@tsed/core";
 import * as Fs from "fs";
 import {Schema, Spec, Tag} from "swagger-schema-official";

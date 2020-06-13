@@ -23,9 +23,6 @@ export * from "./pipes/ValidationPipe";
 export * from "./pipes/ParseExpressionPipe";
 export * from "./pipes/DeserializerPipe";
 
-// services
-export * from "./services/ParseService";
-
 // errors
 export * from "./errors/TemplateRenderingError";
 export * from "./errors/RequiredValidationError";
