@@ -9,19 +9,8 @@ This decorator will use the response returned by the method and will use the vie
 
 This example uses [EJS](https://ejs.co/) and [consolidate](https://npmjs.com/package/consolidate). 
 To use an other engine, see the documentation of the concerned project. 
-
-<Tabs class="-code">
-  <Tab label="v5.56.0+">
   
 <<< @/docs/tutorials/snippets/templating/configuration.ts
-
-  </Tab>
-  <Tab label="Legacy">
-    
-<<< @/docs/tutorials/snippets/templating/configuration-legacy.ts
-  
-  </Tab>
-</Tabs>  
 
 ::: tip 
 The configuration engine is exactly the same as Express configuration engine. 

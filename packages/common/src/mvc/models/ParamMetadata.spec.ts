@@ -60,7 +60,7 @@ describe("ParamMetadata", () => {
         .to.eq(ParamTypes.ERR);
     });
   });
-  
+
   describe("isRequired", () => {
     describe("when property is required", () => {
       let paramMetadata: ParamMetadata;

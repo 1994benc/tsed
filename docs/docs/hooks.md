@@ -15,9 +15,6 @@ This schema resume the order of hooks regard to Server and Providers:
 ### Examples
 
 Hooks can be used on your Server:
-
-<Tabs class="-code">
-  <Tab label="v5.56.0+">
   
 ```typescript
 import {BeforeInit, Configuration} from "@tsed/common";
@@ -29,23 +26,6 @@ class Server implements BeforeInit {
   }
 }
 ```
-
-  </Tab>
-  <Tab label="Legacy">
-
-```typescript
-import {Configuration, BeforeInit} from "@tsed/common";
-
-@Configuration({})
-export class Server implements BeforeInit {
-  async $beforeInit(): Promise<any>  {
-    
-  }
-}
-```
-  
-  </Tab>
-</Tabs>  
 
 or on your @@Module@@ or @@Service@@:
 

@@ -42,18 +42,7 @@ The default configuration is as following:
 
 You can customize your configuration as following on `Server.ts`level:
 
-<Tabs class="-code">
-  <Tab label="v5.56.0+">
-  
-<<< @/docs/snippets/configuration/server.ts
-
-  </Tab>
-  <Tab label="Legacy">
-    
-<<< @/docs/snippets/configuration/server-legacy.ts
-  
-  </Tab>
-</Tabs>  
+<<< @/docs/snippets/configuration/server.ts 
 
 or when you bootstrap your Server (e.g. `index.ts`):
 
