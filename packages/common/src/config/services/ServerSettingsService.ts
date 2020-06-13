@@ -129,30 +129,13 @@ export class ServerSettingsService extends DIConfiguration {
   }
 
   get statics(): IServerMountDirectories {
-    return this.getRaw("statics") || this.getRaw("serveStatic") || {};
+    return this.getRaw("statics") || {};
   }
 
   set statics(value: IServerMountDirectories) {
     this.setRaw("statics", value);
   }
 
-  /**
-   * @deprecated
-   */
-
-  /* istanbul ignore next */
-  get serveStatics() {
-    return this.statics;
-  }
-
-  /**
-   * @deprecated
-   */
-
-  /* istanbul ignore next */
-  set serveStatics(value: IServerMountDirectories) {
-    this.statics = value;
-  }
 
   get acceptMimes(): string[] {
     return this.getRaw("acceptMimes") || ["application/json"];
@@ -168,20 +151,6 @@ export class ServerSettingsService extends DIConfiguration {
 
   set debug(debug: boolean) {
     this.logger = {...this.logger, level: debug ? "debug" : "info"};
-  }
-
-  /**
-   * @deprecated
-   */
-  get validationModelStrict(): boolean {
-    return this.getRaw("validationModelStrict");
-  }
-
-  /**
-   * @deprecated
-   */
-  set validationModelStrict(value: boolean) {
-    this.setRaw("validationModelStrict", value);
   }
 
   get converter(): Partial<IConverterSettings> {
@@ -230,20 +199,6 @@ export class ServerSettingsService extends DIConfiguration {
 
   set exclude(exclude: string[]) {
     this.setRaw("exclude", exclude);
-  }
-
-  /**
-   * @deprecated
-   */
-  get controllerScope(): ProviderScope {
-    return this.scopes[ProviderType.CONTROLLER];
-  }
-
-  /**
-   * @deprecated
-   */
-  set controllerScope(scope: ProviderScope) {
-    this.scopes[ProviderType.CONTROLLER] = scope;
   }
 
   /**
