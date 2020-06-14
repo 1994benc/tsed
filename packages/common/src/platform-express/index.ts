@@ -15,6 +15,3 @@ export * from "./services/ServeStaticService";
 export * from "./services/PlatformExpressApplication";
 export * from "./services/PlatformExpressRouter";
 export * from "./services/PlatformExpressHandler";
-
-// UTILS
-export * from "./utils";
