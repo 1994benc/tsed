@@ -3,6 +3,6 @@ import {ConverterModule} from "../converters/ConverterModule";
 import {ValidationService} from "./services/ValidationService";
 
 @Module({
-  imports: [ConverterModule, ParseService, ValidationService]
+  imports: [ConverterModule, ValidationService]
 })
 export class MvcModule {}
