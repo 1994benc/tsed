@@ -13,7 +13,7 @@ registerProvider({
   injectable: false,
   deps: [Configuration, MongooseService],
   async useAsyncFactory(configuration: Configuration, mongooseService: MongooseService) {
-    const settings = configuration.get<IMDBOptions | MDBConnection[]>("mongoose");
+    const settings = configuration.get<MDBConnection | MDBConnection[]>("mongoose");
     const promises: Promise<Mongoose.Mongoose>[] = [];
     let isDefault = true;
 
@@ -34,16 +34,10 @@ registerProvider({
     };
 
     if (!isArray(settings)) {
-      const {url, connectionOptions, urls} = settings || {};
+      const {url, connectionOptions} = settings || {};
 
       if (url) {
         addConnection("default", url, connectionOptions);
-      }
-
-      if (urls) {
-        Object.entries(urls).forEach(([id, current]) => {
-          addConnection(current.id || id, current.url, current.connectionOptions);
-        });
       }
     } else {
       settings.forEach(current => {
