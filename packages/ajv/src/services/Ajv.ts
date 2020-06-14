@@ -11,12 +11,11 @@ registerProvider({
   deps: [Configuration],
   scope: ProviderScope.SINGLETON,
   useFactory(configuration: Configuration) {
-    const {errorFormat, errorFormatter, options = {}, ...props} = configuration.get<IAjvSettings>("ajv") || {};
+    const {errorFormatter, ...props} = configuration.get<IAjvSettings>("ajv") || {};
 
     return new Ajv({
       verbose: false,
-      ...props,
-      ...options
+      ...props
     });
   }
 });
