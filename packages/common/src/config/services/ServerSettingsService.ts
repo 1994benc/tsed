@@ -128,23 +128,6 @@ export class ServerSettingsService extends DIConfiguration {
     this.setRaw("componentsScan", value);
   }
 
-  get statics(): IServerMountDirectories {
-    return this.getRaw("statics") || {};
-  }
-
-  set statics(value: IServerMountDirectories) {
-    this.setRaw("statics", value);
-  }
-
-
-  get acceptMimes(): string[] {
-    return this.getRaw("acceptMimes") || ["application/json"];
-  }
-
-  set acceptMimes(value: string[]) {
-    this.setRaw("acceptMimes", value || []);
-  }
-
   get debug(): boolean {
     return this.logger.level === "debug";
   }

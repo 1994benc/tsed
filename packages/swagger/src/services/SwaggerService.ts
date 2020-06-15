@@ -1,11 +1,4 @@
-import {
-  Configuration,
-  ControllerProvider,
-  EndpointMetadata,
-  InjectorService,
-  Platform,
-  Service
-} from "@tsed/common";
+import {Configuration, ControllerProvider, EndpointMetadata, InjectorService, Platform, Service} from "@tsed/common";
 import {deepExtends, nameOf, Store} from "@tsed/core";
 import * as Fs from "fs";
 import {Schema, Spec, Tag} from "swagger-schema-official";
@@ -61,7 +54,7 @@ export class SwaggerService {
    * @returns {Info}
    */
   public getDefaultSpec(conf: Partial<ISwaggerSettings>): Spec {
-    const {version} = this.configuration;
+    const {version, acceptMimes = ["application/json"]} = this.configuration;
     const spec: SwaggerSpec =
       conf.spec ||
       ({
@@ -93,7 +86,7 @@ export class SwaggerService {
           contact,
           license
         },
-        consumes: this.configuration.acceptMimes.concat(spec.consumes || []),
+        consumes: acceptMimes.concat(spec.consumes || []),
         produces: spec.produces || ["application/json"],
         securityDefinitions: spec.securityDefinitions || {}
       },
