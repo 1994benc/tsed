@@ -1,9 +1,9 @@
+import {PlatformHandler, PlatformRouter} from "@tsed/common";
 import {InjectorService} from "@tsed/di";
 import {expect} from "chai";
 import * as Express from "express";
 import * as Sinon from "sinon";
-import {stub} from "../../../../../test/helper/tools";
-import {PlatformHandler, PlatformRouter} from "../../platform";
+import {stub} from "../../../../test/helper/tools";
 import {PlatformExpressRouter} from "./PlatformExpressRouter";
 
 const sandbox = Sinon.createSandbox();

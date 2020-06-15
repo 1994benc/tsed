@@ -1,4 +1,5 @@
-import {ContentType, Controller, Get, Render} from "@tsed/common";
+import {ContentType, Controller, Get} from "@tsed/common";
+import {Render} from "@tsed/platform-express";
 import {Hidden} from "@tsed/swagger";
 import * as fs from "fs";
 

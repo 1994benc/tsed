@@ -1,4 +1,4 @@
-import {descriptorOf, Metadata, Store} from "@tsed/core";
+import {catchError, descriptorOf, Metadata, Store} from "@tsed/core";
 import {expect} from "chai";
 import * as Sinon from "sinon";
 import {Inject} from "../../src";
@@ -13,15 +13,10 @@ describe("@Inject()", () => {
       }
 
       // WHEN
-      let actualError;
-      try {
-        Inject()(Test, "test", descriptorOf(Test, "test"));
-      } catch (er) {
-        actualError = er;
-      }
+      const actualError = catchError(() => Inject()(Test, "test", descriptorOf(Test, "test")));
 
       // THEN
-      expect(actualError.message).to.deep.eq("Inject cannot be used as method.static decorator on Test.test");
+      expect(actualError?.message).to.deep.eq("Inject cannot be used as method.static decorator on Test.test");
     });
   });
 

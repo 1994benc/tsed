@@ -1,14 +1,6 @@
 import {Type} from "@tsed/core";
 import {Injectable, InjectorService, ProviderScope} from "@tsed/di";
-import {
-  EndpointMetadata,
-  HandlerMetadata,
-  HandlerType,
-  IHandlerConstructorOptions,
-  IPipe,
-  ParamMetadata,
-  ParamTypes
-} from "../../mvc";
+import {EndpointMetadata, HandlerMetadata, HandlerType, IHandlerConstructorOptions, IPipe, ParamMetadata, ParamTypes} from "../../mvc";
 import {ValidationError} from "../../mvc/errors/ValidationError";
 import {HandlerContext} from "../domain/HandlerContext";
 import {ParamValidationError} from "../errors/ParamValidationError";
@@ -131,7 +123,14 @@ export class PlatformHandler {
           })
         );
     } else {
-      return (request: any, response: any, next: any) => this.onRequest(this.mapHandlerContext(metadata, {request, response, next}));
+      return (request: any, response: any, next: any) =>
+        this.onRequest(
+          this.mapHandlerContext(metadata, {
+            request,
+            response,
+            next
+          })
+        );
     }
   }
 

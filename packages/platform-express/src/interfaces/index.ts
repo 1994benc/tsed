@@ -1,7 +1,7 @@
+import {RequestContext} from "@tsed/common";
 import * as Express from "express";
-import {RequestContext} from "../../platform";
-import {IRouterSettings} from "./IRouterSettings";
 import "./Express";
+import {IRouterSettings} from "./IRouterSettings";
 
 export * from "./IRouterSettings";
 

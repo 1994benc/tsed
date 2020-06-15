@@ -1,11 +1,6 @@
 import "@tsed/ajv";
-import {
-  Configuration,
-  GlobalAcceptMimesMiddleware,
-  PlatformApplication,
-  Inject
-} from "@tsed/common";
-import "@tsed/platform-express"
+import {Configuration, GlobalAcceptMimesMiddleware, Inject, PlatformApplication} from "@tsed/common";
+import {LogIncomingRequestMiddleware} from "@tsed/platform-express";
 
 const cookieParser = require("cookie-parser"),
   bodyParser = require("body-parser"),
@@ -28,8 +23,10 @@ export class TestServer {
    * @returns {Server}
    */
   public $beforeRoutesInit(): void {
-    this.app
-      .use(GlobalAcceptMimesMiddleware)
+    this
+      .app
+      .use(GlobalAcceptMimesMiddleware) // optional
+      .use(LogIncomingRequestMiddleware) // optional
       .use(bodyParser.json())
       .use(
         bodyParser.urlencoded({

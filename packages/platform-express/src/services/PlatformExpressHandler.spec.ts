@@ -1,12 +1,11 @@
 import {Err, Get, HandlerContext, ParamMetadata, ParamTypes, PlatformTest, QueryParams} from "@tsed/common";
-import {Type} from "@tsed/core";
 import {InjectorService} from "@tsed/di";
 import {expect} from "chai";
 import * as Sinon from "sinon";
-import {FakeRequest, FakeResponse} from "../../../../../test/helper";
+import {FakeRequest, FakeResponse} from "../../../../test/helper";
 import {PlatformExpressHandler} from "./PlatformExpressHandler";
 
-function build(injector: InjectorService, type: string | ParamTypes | Type<any>, {expression, required}: any = {}) {
+function build(injector: InjectorService, type: string, {expression, required}: any = {}) {
   class Test {
     test() {}
   }

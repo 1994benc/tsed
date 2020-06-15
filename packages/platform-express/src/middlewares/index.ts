@@ -1,15 +1,4 @@
-import {
-  AcceptMimesMiddleware,
-  GlobalAcceptMimesMiddleware,
-  GlobalErrorHandlerMiddleware,
-  LogIncomingRequestMiddleware,
-  ResponseViewMiddleware
-} from "@tsed/common";
-
-export {
-  AcceptMimesMiddleware,
-  ResponseViewMiddleware,
-  LogIncomingRequestMiddleware,
-  GlobalErrorHandlerMiddleware,
-  GlobalAcceptMimesMiddleware
-};
+export * from "./GlobalAcceptMimesMiddleware";
+export * from "./GlobalErrorHandlerMiddleware";
+export * from "./LogIncomingRequestMiddleware";
+export * from "./ResponseViewMiddleware";

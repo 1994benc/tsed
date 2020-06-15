@@ -1,7 +1,7 @@
 import {expect} from "chai";
 import {InjectorService} from "@tsed/di";
 import * as Sinon from "sinon";
-import {FakeRequest, FakeResponse} from "../../../../../test/helper";
+import {FakeRequest, FakeResponse} from "../../../../test/helper";
 import {LogIncomingRequestMiddleware} from "./LogIncomingRequestMiddleware";
 
 describe("LogIncomingRequestMiddleware", () => {

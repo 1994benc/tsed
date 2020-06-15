@@ -2,7 +2,7 @@ import {PlatformTest} from "@tsed/common";
 import {BadRequest} from "@tsed/exceptions";
 import {expect} from "chai";
 import * as Sinon from "sinon";
-import {FakeRequest, FakeResponse} from "../../../../../test/helper";
+import {FakeRequest, FakeResponse} from "../../../../test/helper";
 import {GlobalErrorHandlerMiddleware} from "./GlobalErrorHandlerMiddleware";
 
 describe("GlobalErrorHandlerMiddleware", () => {

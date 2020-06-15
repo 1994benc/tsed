@@ -1,7 +1,5 @@
+import {HandlerContext, ParamMetadata, ParamTypes, PlatformHandler} from "@tsed/common";
 import {OverrideProvider} from "@tsed/di";
-import {ParamMetadata, ParamTypes} from "../../mvc";
-import {HandlerContext} from "../../platform/domain/HandlerContext";
-import {PlatformHandler} from "../../platform/services/PlatformHandler";
 
 @OverrideProvider(PlatformHandler)
 export class PlatformExpressHandler extends PlatformHandler {

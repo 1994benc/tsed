@@ -1,19 +1,7 @@
-import {
-  BodyParams,
-  Controller,
-  Delete,
-  Get,
-  Head,
-  MergeParams,
-  Patch,
-  Post,
-  Put,
-  QueryParams,
-  Required,
-  Response
-} from "@tsed/common";
-import {Responses, Returns, Title, ReturnsArray} from "@tsed/swagger";
+import {BodyParams, Controller, Delete, Get, Head, Patch, Post, Put, QueryParams, Required, Response} from "@tsed/common";
 import {NotFound} from "@tsed/exceptions";
+import {MergeParams} from "@tsed/platform-express";
+import {Responses, ReturnsArray, Title} from "@tsed/swagger";
 import {EventModel} from "../../models/Event";
 import {BaseController} from "../base/BaseController";
 import {TaskCtrl} from "./TaskCtrl";

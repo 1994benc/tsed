@@ -16,6 +16,7 @@ export * from "./interfaces/IPlatformDriver";
 export * from "./middlewares/SendResponseMiddleware";
 export * from "./middlewares/bindEndpointMiddleware";
 export * from "./middlewares/statusAndHeadersMiddleware";
+export * from "./middlewares/GlobalAcceptMimesMiddleware";
 
 // domain
 export * from "./domain/HandlerContext";

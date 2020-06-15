@@ -1950,44 +1950,7 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
-"@tsed/common@5.44.16":
-  version "5.44.16"
-  resolved "https://registry.yarnpkg.com/@tsed/common/-/common-5.44.16.tgz#03290ae27d4d58c82ae30bf2cb3c93091ffae28f"
-  integrity sha512-GXfcT4FRQ/TH4jT1u7L1xwFxjemvnG1edSeKhnTfO1L6Kl09z8Q8eUBGNqbw3FM29uTfchuDoveODT+Kq7nK+g==
-  dependencies:
-    "@tsed/core" "5.44.16"
-    "@tsed/di" "5.44.16"
-    "@tsed/logger" "^5.4.1"
-    "@types/json-schema" "^7.0.3"
-    globby "11.0.0"
-    json-schema "^0.2.3"
-    normalize-path "3.0.0"
-    on-finished "2.3.0"
-    rxjs "^6.5.2"
-    ts-httpexceptions "4.1.0"
-    ts-log-debug "^5.4.1"
-    tslib "1.11.1"
-    uuid "3.3.3"
-
-"@tsed/core@5.44.16":
-  version "5.44.16"
-  resolved "https://registry.yarnpkg.com/@tsed/core/-/core-5.44.16.tgz#85ee8d526436a9e639b571e7e285ccbdab663e0a"
-  integrity sha512-D/h7Tael7uGH626jilAM8qyuBjQoX3/7NKuqwHeXWyAWpwOq4ixTB4nTRfIaCZ0Lp6smNVuaH8F3bQvHyBBMsg==
-  dependencies:
-    reflect-metadata "^0.1.13"
-    source-map-support "0.5.16"
-    tslib "1.11.1"
-
-"@tsed/di@5.44.16":
-  version "5.44.16"
-  resolved "https://registry.yarnpkg.com/@tsed/di/-/di-5.44.16.tgz#871a3207289669c6b664d4abafa113f943146a64"
-  integrity sha512-Kwg4HsJ3x8/oDI+ao+/iklx3kpPNEmZCC9v/7bcMsr1YzkGDw7wy9CzcKLcU07OPFffTnyBJ19SUpMi5PtiMwA==
-  dependencies:
-    "@tsed/core" "5.44.16"
-    chalk "3.0.0"
-    tslib "1.11.1"
-
-"@tsed/logger@5.5.0", "@tsed/logger@^5.4.1", "@tsed/logger@^5.5.0":
+"@tsed/logger@5.5.0", "@tsed/logger@^5.5.0":
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/@tsed/logger/-/logger-5.5.0.tgz#2fcfd2e6baadc93b2a16bde0a20ea28ac9b075b9"
   integrity sha512-NzLc+CRob8tGPXf9jMt++JpckqG8uZACLWK5Ep3rJOz40t9y7Uyh4rOUfRgj33QiUz3/sATfB1S/5uYtvjTVdA==
@@ -14648,14 +14611,6 @@ source-map-resolve@^0.5.0, source-map-resolve@^0.5.2:
     source-map-url "^0.4.0"
     urix "^0.1.0"
 
-source-map-support@0.5.16:
-  version "0.5.16"
-  resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.16.tgz#0ae069e7fe3ba7538c64c98515e35339eac5a042"
-  integrity sha512-efyLRJDr68D9hBBNIPWFjhpFzURh+KJykQwvMyW5UiZzYwoF6l4YMMDIJJEyFWxWCqfyxLzz6tSfUFR+kXXsVQ==
-  dependencies:
-    buffer-from "^1.0.0"
-    source-map "^0.6.0"
-
 source-map-support@^0.5.6, source-map-support@~0.5.12:
   version "0.5.19"
   resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.19.tgz#a98b62f86dcaf4f67399648c085291ab9e8fed61"
@@ -15686,13 +15641,6 @@ try-require@^1.2.1:
   resolved "https://registry.yarnpkg.com/try-require/-/try-require-1.2.1.tgz#34489a2cac0c09c1cc10ed91ba011594d4333be2"
   integrity sha1-NEiaLKwMCcHMEO2RugEVlNQzO+I=
 
-ts-httpexceptions@4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/ts-httpexceptions/-/ts-httpexceptions-4.1.0.tgz#582b8426936c9404ff1a3787eb233df2f4a11149"
-  integrity sha512-eNppUDEIt7zE/YnJ9tIvDnqzvs41qssS23+QsgOrUm+MZXoVsohAP+XBDAah5QWMk0nOyaLkS7EUpN8HeAdhSA==
-  dependencies:
-    tslib "^1.9.3"
-
 ts-invariant@^0.4.0:
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/ts-invariant/-/ts-invariant-0.4.4.tgz#97a523518688f93aafad01b0e80eb803eb2abd86"
@@ -15711,7 +15659,7 @@ ts-log-debug@5.1.1:
     streamroller "^1.0.3"
     tslib "^1.9.3"
 
-ts-log-debug@^5.4.1, ts-log-debug@^5.5.0:
+ts-log-debug@^5.5.0:
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/ts-log-debug/-/ts-log-debug-5.5.0.tgz#9561f7f40276c26e406c64c98155f9eb844effb1"
   integrity sha512-arMfr8UfHNehIFxOVoxue1A1M/WkY9W1lLfRqUcTq4/XX6FU56IIq5uWFPg+3VjGtGTnA6nhDBnDN6jukvZRzg==

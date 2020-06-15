@@ -1,4 +1,4 @@
-import {Middleware, EndpointInfo, Res, IMiddleware, ResponseData, TemplateRenderingError} from "../../mvc";
+import {EndpointInfo, IMiddleware, Middleware, Res, ResponseData, TemplateRenderingError} from "@tsed/common";
 
 /**
  * See example to override ResponseViewMiddleware [here](/docs/middlewares/override/response-view.md).

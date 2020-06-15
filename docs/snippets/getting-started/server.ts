@@ -1,5 +1,5 @@
-import {Configuration, Inject, PlatformApplication} from "@tsed/common";
-import {GlobalAcceptMimesMiddleware} from "@tsed/platform-express";
+import {Configuration, GlobalAcceptMimesMiddleware, Inject, PlatformApplication} from "@tsed/common";
+import {LogIncomingRequestMiddleware} from "@tsed/platform-express";
 import * as bodyParser from "body-parser";
 import * as compress from "compression";
 import * as cookieParser from "cookie-parser";
@@ -25,6 +25,7 @@ export class Server {
   public $beforeRoutesInit(): void | Promise<any> {
     this.app
       .use(GlobalAcceptMimesMiddleware) // optional
+      .use(LogIncomingRequestMiddleware) // optional
       .use(cookieParser())
       .use(compress({}))
       .use(methodOverride())

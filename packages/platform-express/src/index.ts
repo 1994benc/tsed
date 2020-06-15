@@ -4,9 +4,22 @@ import {PlatformExpress} from "./components/PlatformExpress";
 
 PlatformTest.platformBuilder = PlatformExpress;
 
+// INTERFACES
+export * from "./interfaces";
+
+// DECORATORS
+export * from "./decorators/responseView";
+export * from "./decorators/mergeParams";
+export * from "./decorators/strict";
+export * from "./decorators/caseSensitive";
+
+// MIDDLEWARES
 export * from "./middlewares";
+
+// SERVICES
 export * from "./services";
-export * from "./utils";
+
+// PLATFORM
 export * from "./components/PlatformExpress";
 
 export {createHttpServer, createHttpsServer};

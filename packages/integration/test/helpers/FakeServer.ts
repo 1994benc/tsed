@@ -1,8 +1,8 @@
 import "@tsed/ajv";
-import {Configuration, GlobalAcceptMimesMiddleware, Inject, PlatformApplication} from "@tsed/common";
+import {Configuration, Inject, PlatformApplication, GlobalAcceptMimesMiddleware} from "@tsed/common";
 import "@tsed/graphql";
-import "@tsed/swagger";
 import "@tsed/platform-express";
+import "@tsed/swagger";
 import {CalendarCtrl} from "../../src/controllers/calendars/CalendarCtrl";
 import {EmptyCtrl} from "../../src/controllers/calendars/EmptyCtrl";
 import {EventCtrl} from "../../src/controllers/calendars/EventCtrl";

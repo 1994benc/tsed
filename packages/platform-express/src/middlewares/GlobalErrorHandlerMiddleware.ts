@@ -1,6 +1,6 @@
+import {Err, IMiddlewareError, IResponseError, Middleware, Req, Res} from "@tsed/common";
 import {Constant} from "@tsed/di";
 import {Exception} from "@tsed/exceptions";
-import {Err, IMiddlewareError, IResponseError, Middleware, Req, Res} from "../../mvc";
 
 /**
  * @middleware

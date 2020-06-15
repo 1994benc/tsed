@@ -1,6 +1,6 @@
-import {Configuration, GlobalProviders, Inject, OverrideProvider} from "@tsed/di";
+import {PLATFORM_ROUTER_OPTIONS, PlatformHandler, PlatformRouter} from "@tsed/common";
+import {Configuration, Inject, OverrideProvider} from "@tsed/di";
 import * as Express from "express";
-import {PLATFORM_ROUTER_OPTIONS, PlatformHandler, PlatformRouter} from "../../platform";
 
 declare global {
   namespace TsED {

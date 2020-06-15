@@ -1,7 +1,6 @@
+import {PlatformApplication, PlatformHandler} from "@tsed/common";
 import {OverrideProvider} from "@tsed/di";
 import * as Express from "express";
-import {PlatformApplication} from "../../platform/services/PlatformApplication";
-import {PlatformHandler} from "../../platform/services/PlatformHandler";
 
 declare global {
   namespace TsED {

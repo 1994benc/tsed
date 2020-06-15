@@ -4,17 +4,15 @@ import {
   createHttpServer,
   createHttpsServer,
   Get,
-  GlobalAcceptMimesMiddleware,
-  GlobalErrorHandlerMiddleware,
   InjectorService,
   IRoute,
-  LogIncomingRequestMiddleware,
   PlatformBuilder,
   PlatformTest,
   RequestContext
 } from "@tsed/common";
 import {Type} from "@tsed/core";
 import {expect} from "chai";
+import * as Sinon from "sinon";
 import * as SuperTest from "supertest";
 
 @Configuration({})
@@ -41,12 +39,7 @@ describe("PlatformTest", () => {
       async loadStatics() {}
 
       protected async loadRoutes(routes: IRoute[]): Promise<void> {
-        this.app.use(LogIncomingRequestMiddleware);
-        this.app.use(GlobalAcceptMimesMiddleware);
-
         await super.loadRoutes(routes);
-
-        this.app.use(GlobalErrorHandlerMiddleware);
       }
 
       protected createInjector(module: Type<any>, settings: any) {
@@ -84,6 +77,35 @@ describe("PlatformTest", () => {
   describe("createRequestContext", () => {
     it("should return request context", () => {
       expect(PlatformTest.createRequestContext()).to.be.instanceOf(RequestContext);
+    });
+  });
+
+  describe("invoke()", () => {
+    it("should call invoke and call $onInit hook", async () => {
+      class MyTest {
+        $onInit() {}
+      }
+
+      Sinon.stub(MyTest.prototype, "$onInit");
+
+      const instance = await PlatformTest.invoke<MyTest>(MyTest);
+
+      expect(instance).to.be.instanceOf(MyTest);
+      MyTest.prototype.$onInit.should.have.been.calledWithExactly();
+    });
+    it("should invoke promised provider", async () => {
+      class MyTest {
+        async $onInit() {
+          return "all";
+        }
+      }
+
+      Sinon.spy(MyTest.prototype, "$onInit");
+
+      const instance = await PlatformTest.invoke<MyTest>(MyTest);
+
+      expect(instance).to.be.instanceOf(MyTest);
+      MyTest.prototype.$onInit.should.have.been.calledWithExactly();
     });
   });
 });
