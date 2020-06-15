@@ -24,8 +24,6 @@ describe("GlobalAcceptMimesMiddleware", () => {
       const middleware = new GlobalAcceptMimesMiddleware();
       middleware.acceptMimes = ["application/json"];
 
-      const error = catchError(() => middleware.use(request as any));
-
       const error: any = catchError(() => middleware.use(request as any));
 
       expect(error.message).to.eq("You must accept content-type application/json");

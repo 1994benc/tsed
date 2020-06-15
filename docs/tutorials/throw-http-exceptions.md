@@ -60,7 +60,7 @@ export class CalendarCtrl {
     ): any {
 
         if (!user.name) {
-            throw(new RequiredUserName());
+            throw new RequiredUserName();
         }
 
        return user;

@@ -1,5 +1,5 @@
 import {expect} from "chai";
-import {Controller, Post, Required, PlatformTest, BodyParams} from "@tsed/common";
+import {BodyParams, Controller, PlatformTest, Post, Required} from "@tsed/common";
 import * as SuperTest from "supertest";
 import {TestServer} from "./helpers/TestServer";
 
@@ -78,7 +78,19 @@ describe("Body spec", () => {
     it("should return an empty array (1)", async () => {
       const response = await request.post("/rest/test-scenario-3").send().expect(400);
 
-      expect(response.text).to.deep.equal("Bad request on parameter \"request.body.test\".<br />It should have required parameter 'test'");
+      expect(response.body).to.deep.equal({
+        "name": "REQUIRED_VALIDATION_ERROR",
+        "message": "Bad request on parameter \"request.body.test\".\nIt should have required parameter 'test'",
+        "status": 400,
+        "errors": [{
+          "dataPath": "",
+          "keyword": "required",
+          "message": "It should have required parameter 'test'",
+          "modelName": "body",
+          "params": {"missingProperty": "test"},
+          "schemaPath": "#/required"
+        }]
+      });
     });
   });
 });

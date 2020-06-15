@@ -1,7 +1,6 @@
-import {PlatformTest} from "@tsed/common";
+import {PlatformTest, ValidationError} from "@tsed/common";
 import {BadRequest} from "@tsed/exceptions";
 import {expect} from "chai";
-import * as Sinon from "sinon";
 import {FakeRequest, FakeResponse} from "../../../../test/helper";
 import {GlobalErrorHandlerMiddleware} from "./GlobalErrorHandlerMiddleware";
 
@@ -9,82 +8,47 @@ describe("GlobalErrorHandlerMiddleware", () => {
   beforeEach(() => PlatformTest.create());
   afterEach(() => PlatformTest.reset());
 
-  describe("use()", () => {
-    describe("instanceof Exception", () => {
-      it(
-        "should call the middleware",
-        PlatformTest.inject([GlobalErrorHandlerMiddleware], (middleware: GlobalErrorHandlerMiddleware) => {
-          const response = new FakeResponse();
-          const request = new FakeRequest();
-          const error: any = new BadRequest("test");
-          error.origin = "origin";
+  it("should map string error", () => {
+    const middleware = PlatformTest.get<GlobalErrorHandlerMiddleware>(GlobalErrorHandlerMiddleware);
+    const error = "MyError";
+    const request: any = new FakeRequest();
+    const response: any = new FakeResponse();
 
-          Sinon.stub(middleware, "setHeaders");
+    middleware.use(error, request, response);
 
-          // @ts-ignore
-          middleware.use(error, request, response);
-
-          expect(middleware.setHeaders).to.have.been.calledWithExactly(response, error, "origin");
-          expect(response._body).is.equal("test");
-          expect(response.statusCode).is.equal(error.status);
-        })
-      );
-    });
-
-    describe("Error as string", () => {
-      it(
-        "should call the middleware",
-        PlatformTest.inject([GlobalErrorHandlerMiddleware], (middleware: GlobalErrorHandlerMiddleware) => {
-          const response = new FakeResponse();
-          const request = new FakeRequest();
-          const error = "message";
-
-          // @ts-ignore
-          middleware.use(error, request, response);
-
-          expect(response._body).is.equal("message");
-          expect(response.statusCode).is.equal(404);
-        })
-      );
-    });
-
-    describe("InternalServerError", () => {
-      it(
-        "should call the middleware",
-        PlatformTest.inject([GlobalErrorHandlerMiddleware], (middleware: GlobalErrorHandlerMiddleware) => {
-          const response = new FakeResponse();
-          const request = new FakeRequest();
-          const error = new Error("test");
-
-          Sinon.stub(middleware, "setHeaders");
-
-          // @ts-ignore
-          middleware.use(error, request, response);
-
-          expect(response.statusCode).is.equal(500);
-          expect(response._body).is.equal("Internal Error");
-          expect(middleware.setHeaders).to.have.been.calledWithExactly(response, error, undefined);
-        })
-      );
-    });
+    expect(response._body).to.equal("MyError");
   });
 
-  describe("setHeaders()", () => {
-    it(
-      "should set headers",
-      PlatformTest.inject([GlobalErrorHandlerMiddleware], (middleware: GlobalErrorHandlerMiddleware) => {
-        const error: any = new Error("error");
-        error.errors = ["test", "test2"];
-        error.headers = {"x-header": "value"};
+  it("should map exception", () => {
+    const middleware = PlatformTest.get<GlobalErrorHandlerMiddleware>(GlobalErrorHandlerMiddleware);
+    const origin = new ValidationError("wrong ID", [
+      {
+        path: "id",
+        error: "format"
+      }
+    ]);
 
-        const response: any = {};
-        response.set = Sinon.stub();
+    const error = new BadRequest("Bad request on ID", origin);
+    error.headers = {
+      "x-path": "id"
+    };
 
-        middleware.setHeaders(response, error);
+    const request: any = new FakeRequest();
+    const response: any = new FakeResponse();
 
-        expect(response.set.getCall(0)).to.have.been.calledWithExactly({"x-header": "value"});
-        expect(response.set.getCall(1)).to.have.been.calledWithExactly("errors", JSON.stringify(["test", "test2"]));
-      })
-    );
+    middleware.use(error, request, response);
+
+    expect(response._headers).to.deep.equal("x-path:id\n");
+    expect(JSON.parse(response._body)).to.deep.equal({
+      errors: [
+        {
+          error: "format",
+          path: "id"
+        }
+      ],
+      message: "Bad request on ID, innerException: wrong ID",
+      name: "VALIDATION_ERROR",
+      status: 400
+    });
   });
 });

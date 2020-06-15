@@ -32,7 +32,11 @@ export class FakeResponse {
     }
   }
 
-  public set() {
+  public set(obj: any) {
+    Object.entries(obj).forEach(([key, value]) => {
+      this.setHeader(key, value as any);
+    });
+
     return this;
   }
 
@@ -114,5 +118,6 @@ export class FakeResponse {
   }
 
   end() {
+    return this;
   }
 }

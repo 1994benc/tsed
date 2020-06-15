@@ -1,10 +1,8 @@
 import {Env} from "@tsed/core";
-import {ProviderScope} from "@tsed/di";
 import * as Https from "https";
-import {IErrorsSettings} from "./IErrorSettings";
+import {IConverterSettings} from "./IConverterSettings";
 import {ILoggerSettings} from "./ILoggerSettings";
 import {IServerMountDirectories} from "./IServerMountDirectories";
-import {IConverterSettings} from "./IConverterSettings";
 
 declare global {
   namespace TsED {
@@ -70,10 +68,6 @@ declare global {
        */
       logger: Partial<ILoggerSettings>;
       /**
-       * Errors configuration.
-       */
-      errors: Partial<IErrorsSettings>;
-      /**
        * Object to mount all directories under to his endpoints. See more on [Serve Static](/tutorials/serve-static-files.md).
        */
       statics: IServerMountDirectories;
@@ -81,6 +75,5 @@ declare global {
   }
 }
 
-export * from "./IErrorSettings";
 export * from "./ILoggerSettings";
 export * from "./IServerMountDirectories";

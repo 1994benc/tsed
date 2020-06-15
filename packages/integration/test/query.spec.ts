@@ -1,5 +1,5 @@
 import {expect} from "chai";
-import {Controller, PlatformTest, Get, QueryParams} from "@tsed/common";
+import {Controller, Get, PlatformTest, QueryParams} from "@tsed/common";
 import * as SuperTest from "supertest";
 import {TestServer} from "./helpers/TestServer";
 
@@ -134,7 +134,12 @@ describe("Query spec", () => {
     it("should throw bad request", async () => {
       const response = await request.get(`${endpoint}?test=error`).expect(400);
       // FIXME REMOVE THIS when @tsed/schema is out
-      expect(response.text).to.deep.equal("Bad request on parameter \"request.query.test\".<br />Cast error. Expression value is not a number.");
+      expect(response.body).to.deep.equal({
+        "name": "VALIDATION_ERROR",
+        "message": "Bad request on parameter \"request.query.test\".\nCast error. Expression value is not a number.",
+        "status": 400,
+        "errors": []
+      });
     });
     it("should return undefined when query is empty", async () => {
       const response = await request.get(`${endpoint}?test=null`).expect(200);

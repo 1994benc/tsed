@@ -70,9 +70,6 @@
         "responses": {
           "200": {
             "description": "Success"
-          },
-          "401": {
-            "description": "Unauthorized"
           }
         }
       }
@@ -260,9 +257,6 @@
           },
           "400": {
             "description": "Missing required parameter"
-          },
-          "401": {
-            "description": "Unauthorized"
           }
         }
       },
@@ -567,9 +561,6 @@
           },
           "400": {
             "description": "Missing required parameter"
-          },
-          "401": {
-            "description": "Unauthorized"
           }
         },
         "security": [
@@ -617,9 +608,6 @@
         "responses": {
           "200": {
             "description": "Success"
-          },
-          "401": {
-            "description": "Unauthorized"
           }
         }
       }
@@ -633,9 +621,6 @@
         "responses": {
           "200": {
             "description": "Success"
-          },
-          "401": {
-            "description": "Unauthorized"
           }
         }
       }
