@@ -1,4 +1,4 @@
-import {ServerSettingsService, PlatformTest} from "@tsed/common";
+import {PlatformConfiguration, PlatformTest} from "@tsed/common";
 import {expect} from "chai";
 import * as Mongoose from "mongoose";
 import * as Sinon from "sinon";
@@ -11,7 +11,7 @@ describe("MongooseService", () => {
     });
 
     after(
-      PlatformTest.inject([ServerSettingsService], (serverSetttings: ServerSettingsService) => {
+      PlatformTest.inject([PlatformConfiguration], (serverSetttings: PlatformConfiguration) => {
         serverSetttings.set("mongoose", {
           url: undefined,
           connectionOptions: undefined,

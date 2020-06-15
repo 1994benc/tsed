@@ -1,4 +1,4 @@
-import {PlatformTest, ServerSettingsService} from "@tsed/common";
+import {PlatformTest, PlatformConfiguration} from "@tsed/common";
 import {Store} from "@tsed/core";
 import {expect} from "chai";
 import * as Sinon from "sinon";
@@ -9,14 +9,14 @@ class Test {}
 
 describe("SwaggerService", () => {
   let swaggerService: SwaggerService;
-  let settingsService: ServerSettingsService;
+  let settingsService: PlatformConfiguration;
 
   before(() => PlatformTest.create());
   after(() => PlatformTest.reset());
   before(
     PlatformTest.inject(
-      [SwaggerService, ServerSettingsService],
-      (_swaggerService: SwaggerService, _serverSettingsService: ServerSettingsService) => {
+      [SwaggerService, PlatformConfiguration],
+      (_swaggerService: SwaggerService, _serverSettingsService: PlatformConfiguration) => {
         swaggerService = _swaggerService;
         settingsService = _serverSettingsService;
       }

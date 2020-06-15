@@ -1,5 +1,5 @@
 import {expect} from "chai";
-import {PlatformApplication, PlatformTest, ServerSettingsService} from "@tsed/common";
+import {PlatformApplication, PlatformTest, PlatformConfiguration} from "@tsed/common";
 import * as Express from "express";
 import * as Sinon from "sinon";
 import {ServeStaticService} from "./ServeStaticService";
@@ -48,7 +48,7 @@ describe("ServeStaticService", () => {
             use: platformApp
           },
           {
-            token: ServerSettingsService,
+            token: PlatformConfiguration,
             use: serverSettingService
           }
         ]);
@@ -96,7 +96,7 @@ describe("ServeStaticService", () => {
             use: platformApp
           },
           {
-            token: ServerSettingsService,
+            token: PlatformConfiguration,
             use: serverSettingService
           }
         ]);

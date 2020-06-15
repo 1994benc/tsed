@@ -8,13 +8,13 @@ import {IConverterSettings} from "../interfaces/IConverterSettings";
 const rootDir = process.cwd();
 
 /**
- * `ServerSettingsService` contains all information about your Server configuration.
+ * `PlatformConfiguration` contains all information about your Server configuration.
  */
 @Injectable({
   scope: ProviderScope.SINGLETON,
   global: true
 })
-export class ServerSettingsService extends DIConfiguration {
+export class PlatformConfiguration extends DIConfiguration {
   constructor() {
     super({
       rootDir,
@@ -222,7 +222,7 @@ export class ServerSettingsService extends DIConfiguration {
    * @returns {string|number}
    */
   getHttpPort(): {address: string; port: number} {
-    return ServerSettingsService.buildAddressAndPort(this.getRaw("httpPort"));
+    return PlatformConfiguration.buildAddressAndPort(this.getRaw("httpPort"));
   }
 
   /**
@@ -238,7 +238,7 @@ export class ServerSettingsService extends DIConfiguration {
    * @returns {string|number}
    */
   getHttpsPort(): {address: string; port: number} {
-    return ServerSettingsService.buildAddressAndPort(this.getRaw("httpsPort"));
+    return PlatformConfiguration.buildAddressAndPort(this.getRaw("httpsPort"));
   }
 
   /**
